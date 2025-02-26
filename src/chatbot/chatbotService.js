@@ -82,9 +82,13 @@ async function getAllChat(userId) {
   try {
     const chats = await prisma.chat.findMany({
       where: { userId },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 5,
     })
 
-    return chats
+    return chats.reverse()
   } catch (error) {
     console.error(
       "Failed To Get All Chat",
