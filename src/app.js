@@ -1,4 +1,5 @@
 const express = require("express")
+const PORT = 3000
 const app = express()
 const userRoutes = require("./user/userRoute")
 const chatRoutes = require("./chatbot/chatbotRoute")
@@ -15,4 +16,6 @@ app.get("/", (req, res) => {
   res.send("Hallo bro")
 })
 
-module.exports = app
+app.listen(PORT, () => {
+  console.log(`this server run at port: ${PORT}`)
+})
